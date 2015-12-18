@@ -364,9 +364,9 @@ classdef fourierAdaptiveOptics < handle
         
         function fao = psdDemo
             d_tel = telescope(8);
-            d_atm = atmosphere(photometry.V,15e-2,30,'windSpeed',10,'windDirection',0);
-%           d_atm = gmtAtmosphere(1);
-            fao = fourierAdaptiveOptics(d_tel,d_atm,10,5,0.5,1e-3,1e-3);
+             d_atm = atmosphere(photometry.V,15e-2,30,'windSpeed',10,'windDirection',0);
+%            d_atm = gmtAtmosphere(1);
+            fao = fourierAdaptiveOptics(d_tel,d_atm,10,5*0,0.5,1e-3,1e-3);
             
             pixelScaleInMas = 2.5;
             pixelScale = pixelScaleInMas*1e-3*constants.arcsec2radian/fao.atm.wavelength;
