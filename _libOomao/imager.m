@@ -22,8 +22,6 @@ classdef imager < detector
         ee;
         % entrapped energy slit width
         eeWidth;
-        % telescope diameter
-        D
     end
         
     properties (Access=private)
@@ -116,17 +114,17 @@ classdef imager < detector
                     % strehl ratio
                     obj.strehl(kFrame) = sum(otfAO(:))/sum(otf(:));
                     % entrapped energy
-                    if ~isempty(obj.eeWidth)
-                        a      = (obj.eeWidth/(src_.wavelength/obj.D*constants.radian2arcsec))/obj.D;
-                        nOtf   = length(otfAO);
-                        u      = linspace(-1,1,nOtf).*obj.D;
-                        [x,y]  = meshgrid(u);
-                        eeFilter ...
-                            = a^2*(sin(pi.*x.*a)./(pi.*x.*a)).*...
-                            (sin(pi.*y.*a)./(pi.*y.*a));
-                        otfAO = otfAO/max(otfAO(:));
-                        obj.ee(kFrame) = real(trapz(u,trapz(u,otfAO.*eeFilter)));
-                    end
+%                     if ~isempty(obj.eeWidth)
+%                         a      = (obj.eeWidth/(src_.wavelength/obj.tel.D*constants.radian2arcsec))/obj.tel.D;
+%                         nOtf   = length(otfAO);
+%                         u      = linspace(-1,1,nOtf).*obj.tel.D;
+%                         [x,y]  = meshgrid(u);
+%                         eeFilter ...
+%                             = a^2*(sin(pi.*x.*a)./(pi.*x.*a)).*...
+%                             (sin(pi.*y.*a)./(pi.*y.*a));
+%                         otfAO = otfAO/max(otfAO(:));
+%                         obj.ee(kFrame) = real(trapz(u,trapz(u,otfAO.*eeFilter)));
+%                     end
 
                 end
                 obj.imgLens.fieldStopSize = obj.imgLens.fieldStopSize/2;

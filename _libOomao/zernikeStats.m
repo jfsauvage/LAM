@@ -582,7 +582,6 @@ classdef zernikeStats
                     jSrc = src;
                     mGs = nGs;
                     aiaj = cell(nGs,mGs);
-                    %aiaj = repmat({zeros(zern.nMode)}, nGs, mGs);
 %                     for iGs = 1:nGs
 %                         fprintf(' @(Data covariance)> ');
 %                         gsCurrent = iSrc(iGs);
