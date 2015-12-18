@@ -2,7 +2,23 @@
 % Demonstrate how to build a simple closed-loop single conjugated adaptive
 % optics system
 
+
+%% New section with equations
+
+% This is my equation
+%%
+% 
+% $$\int_0^1 x dx$$
+% 
+
+% This is the code to produce it
+a=2;
+%this is the output
+a
+
 %% Definition of the atmosphere 
+
+
 % The atmosphere class constructor has 2 required input:
 % 
 % * the wavelength [m]
@@ -42,8 +58,8 @@ atm = atmosphere(photometry.V,0.15,30,...
 % * the field of view either in arcminute or arcsecond
 % * the pupil sampling or resolution in pixels
 % * the atmopheric layer motion sampling time [s]
-nPx = 3*60;
-tel = telescope(8.0,...
+nPx = 60;
+tel = telescope(3.6,...
     'fieldOfViewInArcMin',2.5,...
     'resolution',nPx,...
     'samplingTime',1/100);
@@ -70,9 +86,9 @@ ngs = source('wavelength',photometry.R);
 %
 % * the minimum light ratio that is the ratio between a partially
 % illuminated subaperture and a fully illuminated aperture
-nLenslet = 20;
-%wfs = shackHartmann(nLenslet,nPx,0.75);
-wfs = pyramid(nLenslet,nPx,'modulation',6);
+nLenslet = 10;
+wfs = shackHartmann(nLenslet,nPx,0.75);
+%wfs = pyramid(nLenslet,nPx,'modulation',6);
 %%
 % Propagation of the calibration source to the WFS through the telescope
 ngs = ngs.*tel*wfs;
